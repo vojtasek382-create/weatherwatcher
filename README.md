@@ -102,9 +102,8 @@ python main.py --help
 
 Ukázka výstupu
 
-======================================================
   Předpověď počasí pro město: Praha (Česká republika)
-======================================================
+
   Teplota:     18.5 °C
   Počasí:      Polojasno
   Rychlost větru: 3.2 m/s
@@ -114,7 +113,7 @@ Ukázka výstupu
   [✓] Běh:             Vynikající (Teplota i vítr v ideálním rozmezí)
   [✓] Cyklistika:      Dobré
   [✗] Pozorování hvězd:Nevhodné (Částečná oblačnost)
-======================================================
+
 
 
 📦 Použité knihovny (requirements.txt)
