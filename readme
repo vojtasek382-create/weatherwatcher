@@ -4,7 +4,7 @@ Aplikace v Pythonu pro načítání předpovědi počasí z rozhraní OpenWeathe
 
 Projekt slouží jako semestrální práce z předmětu Python / Programování.
 
-🛠 Hlavní funkcionality
+Hlavní funkcionality
 
 Načítání reálných dat: Stahování aktuálního počasí i předpovědi z OpenWeatherMap API.
 
@@ -45,7 +45,7 @@ weather-activity-planner/
     └── formatter.py       # Výstup do terminálu / Formátování (rich)
 
 
-🚀 Instalace a spuštění
+Instalace a spuštění
 
 1. Požadavky
 
