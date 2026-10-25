@@ -128,3 +128,74 @@ Jednotkové testy (unit testy) pro logiku vyhodnocování aktivit a parsování 
 
 pytest test/
 
+
+ROADMAP
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+Fáze 1: Základní kostra a API integrace (První milník)
+
+Cíl: Zprovoznit komunikaci s API a základní logiku v konzoli.
+
+    [x] Návrh architektury: Rozdělení projektu do modulů (config.py, models.py, api_client.py, evaluator.py, main.py).
+
+    [x] Zabezpečení klíče: Nastavení .env souboru a knihovny python-dotenv.
+
+    [ ] API klient: Implementace requests volání na OpenWeatherMap, zpracování JSON odpovědi a parsování základních metrik (teplota, vítr, srážky).
+
+    [ ] Vyhodnocovací logika: Vytvoření třídy ActivityRule pro ověření podmínek (např. běh, turistika).
+
+    [ ] CLI spuštění: Základní vstup přes argparse a výpis aktuálního počasí s doporučením do terminálu.
+
+Fáze 2: Datová vrstva a perzistence (Druhý milník)
+
+Cíl: Přidat ukládání dat, aby projekt nebyl jen „jednorázový skript“.
+
+    [ ] Návrh SQLite databáze (db.py):
+
+        Vytvoření tabulky pro historii vyhledávání (město, datum/čas, zjištěná teplota, doporučené aktivity).
+
+    [ ] Ukládání dotazů: Po každém úspěšném stažení počasí uložit záznam do databáze.
+
+    [ ] Historie v CLI: Přidat do aplikace příkaz nebo přepínač (např. python main.py --history), který vypíše poslední vyhledávání z databáze.
+
+    [ ] Cachování (volitelně): Kontrola, zda pro dané město nebyla data stažena před méně než 10 minutami, aby se šetřily limity API.
+
+Fáze 3: Robustnost, výjimky a uživatelský komfort (Třetí milník)
+
+Cíl: Ošetřit chybové stavy a vylepšit vzhled výstupu.
+
+    [ ] Ošetření chyb (Error Handling):
+
+        Neexistující město (chyba 404 z API).
+
+        Výpadek internetového připojení / timeout.
+
+        Neplatný nebo expirovaný API klíč.
+
+    [ ] Rozšíření CLI argumentů:
+
+        Přidání volitelných parametrů (např. --units imperial pro Fahrenheit, --save pro ruční uložení).
+
+    [ ] Vizuální vylepšení: Formátování výstupu v terminálu (využití barev nebo přehledných rámečků – např. přes vestavěné formátování nebo balíček rich).
+
+Fáze 4: Testování, dokumentace a Git (Finální milník)
+
+Cíl: Připravit projekt k odevzdání a obhajobě.
+
+    [ ] Unit testy (tests/):
+
+        Napsat alespoň několik základních testů (např. pomocí vestavěného modulu unittest) pro ověření logiky vyhodnocování aktivit (evaluator.py).
+
+    [ ] Dokumentace (README.md):
+
+        Popsat instalaci, spuštění, strukturu projektů a požadavky (viz šablona, kterou jsme řešili dříve).
+
+    [ ] Konfigurace pro Git:
+
+        Zkontrolovat .gitignore (skrytí .env, databáze .db a virtuálního prostředí .venv).
+
+        Vytvořit .env.example.
+
+    [ ] Finální revize kódu:
+
+        Kontrola dodržování konvencí, type hints (-> str, -> float) a čistoty kódu (PEP 8).
