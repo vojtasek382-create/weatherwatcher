@@ -1,13 +1,13 @@
 import requests
 from typing import Optional
 from config import API_KEY, BASE_URL, DEFAULT_UNITS, DEFAULT_LANG
-from models import WeatherData
+from models import DataPocasi
 
 class WeatherAPIClient:
     def __init__(self, api_key: str = API_KEY):
         self.api_key = api_key
 
-    def get_current_weather(self, city: str) -> Optional[WeatherData]:
+    def get_current_weather(self, city: str) -> Optional[DataPocasi]:
         if not self.api_key or self.api_key == "Zde dam klic":
             print("[Chyba API] Není nastaven platný API klíč. Zkontroluj soubor .env.")
             return None
@@ -35,7 +35,7 @@ class WeatherAPIClient:
             weather_id = data["weather"][0]["id"]
             is_raining = 200 <= weather_id < 600
             
-            return WeatherData(
+            return DataPocasi(
                 city=data["name"],
                 temperature=data["main"]["temp"],
                 feels_like=data["main"]["feels_like"],
